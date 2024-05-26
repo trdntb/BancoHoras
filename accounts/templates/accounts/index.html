@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Funcionarios</title>
+    <link rel="stylesheet" href="{% static 'accounts/styles.css' %}">
+</head>
+<body>
+    <div class='table'>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome Completo</th>
+                    <th>Horário de Entrada</th>
+                    <th>Horário de Saída</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for funcionario in funcionarios %}
+                <tr>
+                    <td>{{ funcionario.nome_completo }}</td>
+                    <td>{{ funcionario.horario_entrada }}</td>
+                    <td>{{ funcionario.horario_saida }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="table">
+        <form action="{% url "back_to_home" %}" method="post"> {% csrf_token %}
+            <button type='submit'>Voltar!</button>
+        </form>
+    </div>
+
+</body>
+</html>
